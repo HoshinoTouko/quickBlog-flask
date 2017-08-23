@@ -25,7 +25,7 @@ class DB:
     def select(self, table):
         '''Select function'''
         conn_cursor = self.conn.cursor()
-        sql = 'SELECT * FROM  `%s` ORDER BY id' % (table)
+        sql = 'SELECT * FROM  `%s` ORDER BY id DESC' % (table)
         cursor = list(conn_cursor.execute(sql))
         self.conn.close()
         return cursor

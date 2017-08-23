@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block contents %}
+<div class="col-sm-8 blog-main">
+    {% if postdata %}
+    <div class="blog-post">
+        <h2 class="blog-post-title">{{ postdata.title }}</h2>
+        <p class="blog-post-meta">{{ postdata.time }} by <a href="#">{{ postdata.author }}</a></p>
+        <div class="blog-post-body">
+            {{ postdata.text|safe }}
+        </div>
+    </div>
+    {% else %} 
+    <div class="blog-post">
+        <h2 class="blog-post-title">404 Not Found</h2>
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock contents %}.

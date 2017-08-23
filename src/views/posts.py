@@ -9,7 +9,26 @@ POSTS = Blueprint('posts', __name__)
 @POSTS.route('/')
 def posts_index():
     '''Post index'''
-    return render_template('posts/posts.html')
+    database = DB()
+    data = database.select('posts')
+    # print(data)
+    all_post_data = []
+    for item in data:
+        print(item)
+        post_data = {
+            'id': item[0],
+            'title': item[1],
+            'time': item[2],
+            'text': md2html(item[3]),
+            'labels': item[4].replace(';', ' '),
+            'author': item[5]
+        }
+        all_post_data.append(post_data)
+    return render_template(
+        'posts/posts.html',
+        all_post_data=all_post_data,
+        title='Posts'
+    )
 
 @POSTS.route('/<int:post_id>')
 def posts_detail(post_id):
@@ -20,15 +39,19 @@ def posts_detail(post_id):
     for item in data:
         if item[0] == post_id:
             print(item)
-            postdata = {
+            post_data = {
                 'id': item[0],
                 'title': item[1],
                 'time': item[2],
                 'text': md2html(item[3]),
-                'label': item[4].replace(';', ' '),
+                'labels': item[4].replace(';', ' '),
                 'author': item[5]
             }
-            return render_template('posts/post.html', postdata=postdata)
+            return render_template(
+                'posts/post.html',
+                post_data=post_data,
+                title=post_data['title']
+            )
     return render_template('posts/post.html')
 
 

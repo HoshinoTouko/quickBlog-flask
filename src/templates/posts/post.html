@@ -1,11 +1,12 @@
 {% extends "base.html" %} {% block contents %}
 <div class="col-sm-8 blog-main">
-    {% if postdata %}
+    {% if post_data %}
     <div class="blog-post">
-        <h2 class="blog-post-title">{{ postdata.title }}</h2>
-        <p class="blog-post-meta">{{ postdata.time }} by <a href="#">{{ postdata.author }}</a></p>
+        <h2 class="blog-post-title">{{ post_data.title }}</h2>
+        <p class="blog-post-meta">{{ post_data.time }} by <a href="#">{{ post_data.author }}</a></p>
+        <p class="blog-post-meta">Labels: {{ post_data.labels }}</p>
         <div class="blog-post-body">
-            {{ postdata.text|safe }}
+            {{ post_data.text|safe }}
         </div>
     </div>
     {% else %} 

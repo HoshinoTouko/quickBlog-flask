@@ -6,12 +6,14 @@ from ..model import userModel
 
 ADMIN = Blueprint('admin', __name__)
 
-def login_required(f):
-    @wraps(f)
+def login_required(func):
+    '''A decorated function that check if the user has logged in.'''
+    @wraps(func)
     def decorated_function(*args, **kwargs):
+        '''decorated_function'''
         if not is_login():
             return redirect(url_for('admin.login', next=request.url))
-        return f(*args, **kwargs)
+        return func(*args, **kwargs)
     return decorated_function
 
 def is_login():

@@ -1,5 +1,4 @@
-'''A model for fetch or pull posts'''
-import markdown
+'''A model for user functions'''
 from .db import DB
 
 def auth_user_and_pass(username, password):

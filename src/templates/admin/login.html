@@ -1,0 +1,11 @@
+{% extends "base.admin.html" %} 
+{% block contents %} 
+    {% if tips %}
+        <p>!Tips: {{tips}}</p>
+    {% endif %}
+    <form method="post">
+        <p><input type="text" name="username"></p>
+        <p><input type="password" name="password"></p>
+        <p><input type="submit" value="Login"></p>
+    </form>
+{% endblock contents %}.

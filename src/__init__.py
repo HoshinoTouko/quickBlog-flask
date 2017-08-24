@@ -2,7 +2,7 @@
 from flask import Flask
 from .views.index import INDEX
 from .views.posts import POSTS
-from .views.auth import AUTH
+from .views.admin import ADMIN
 from .views.archives import ARCHIVES
 
 # Instance relative config
@@ -13,5 +13,5 @@ APP.config.from_pyfile('config.py')
 # Regist blueprint
 APP.register_blueprint(INDEX, url_prefix='/')
 APP.register_blueprint(POSTS, url_prefix='/posts')
-APP.register_blueprint(AUTH, url_prefix='')
+APP.register_blueprint(ADMIN, url_prefix='/admin')
 APP.register_blueprint(ARCHIVES, url_prefix='')

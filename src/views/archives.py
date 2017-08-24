@@ -24,26 +24,13 @@ def archives_all_author():
         title='Posts'
     )
 
-@ARCHIVES.route('/author/')
-def archives_author():
+@ARCHIVES.route('/author/<string:author_name>')
+def archives_author(author_name):
     '''Show all post of an author'''
-    database = DB()
-    data = database.select('posts')
-    # print(data)
-    all_post_data = []
-    for item in data:
-        print(item)
-        post_data = {
-            'id': item[0],
-            'title': item[1],
-            'time': item[2],
-            'text': md2html(item[3]),
-            'labels': item[4].replace(';', ' '),
-            'author': item[5]
-        }
-        all_post_data.append(post_data)
+    all_post_data = postModel.get_post_by_author(author_name)
     return render_template(
-        'posts/posts.html',
+        'archives/author.html',
+        author_name=author_name,
         all_post_data=all_post_data,
         title='Posts'
     )

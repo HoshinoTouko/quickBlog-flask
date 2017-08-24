@@ -3,7 +3,9 @@
     {% for author, posts in author_data.items() %} 
         <div class="col-sm-8 blog-main">
             <div class="blog-post">
-                <h2 class="blog-post-title">Author: {{ author }}</h2>
+                <h2 class="blog-post-title">
+                    Author: <a href="{{ author }}">{{ author }}</a>
+                </h2>
                 {% for post_data in posts %}
                     <p class="blog-post-meta">
                         <a href="../posts/{{ post_data.id }}">{{ post_data.title }}</a>

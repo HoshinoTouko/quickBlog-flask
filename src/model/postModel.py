@@ -3,11 +3,11 @@ import markdown
 from .db import DB
 
 # Get method
-def get_all_posts_by_id(post_id):
+def get_post_by_id(post_id):
     '''Get posts of one author'''
     return list_filter(get_all_posts(), 'id', post_id)
 
-def get_all_posts_by_author(author):
+def get_post_by_author(author):
     '''Get posts of one author'''
     return list_filter(get_all_posts(), 'author', author)
 

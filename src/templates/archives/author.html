@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% block contents %} 
+    <h1>Author: {{ author_name }}</h1>
+    <br/><br/>
+    {% for post_data in all_post_data %}
+        <div class="col-sm-8 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{ post_data.title }}</h2>
+                <p class="blog-post-meta">{{ post_data.time }} by <a href="#">{{ post_data.author }}</a></p>
+                <p class="blog-post-meta">Labels: {{ post_data.labels }}</p>
+                <div class="blog-post-body">
+                    {{ post_data.text|safe }}
+                </div>
+                <a href="{{ post_data.id }}">Read more</a>
+            </div>
+        </div>
+    {% endfor %} 
+{% endblock contents %}.

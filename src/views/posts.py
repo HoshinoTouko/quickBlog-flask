@@ -20,7 +20,7 @@ def posts_index():
 def posts_detail(post_id):
     '''Post detail'''
     try:
-        post_data = postModel.get_all_posts_by_id(post_id)[0]
+        post_data = postModel.get_post_by_id(post_id)[0]
         return render_template(
             'posts/post.html',
             post_data=post_data,

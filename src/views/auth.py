@@ -1,4 +1,4 @@
-'''Auth view module(Like login/logout)'''
+'''Auth module(Like login/logout)'''
 
 from flask import Blueprint, render_template, request, session, redirect, url_for
 
